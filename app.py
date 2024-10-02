@@ -100,6 +100,11 @@ def chat():
         logging.error(f"Error handling chat request: {e}")
         return jsonify({'response': "An error occurred processing your request."}), 500
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify(status='healthy'), 200
+
+
 if __name__ == '__main__':
     print("Starting Flask application...")
     app.run(host='0.0.0.0', port=5000)
